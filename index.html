@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Scheduling Simulator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="simulator-card">
+        <h1>⚙️ CPU Scheduling Simulator <span>FCFS · SJF (non‑preemptive)</span></h1>
+
+        <div class="input-panel">
+            <div class="table-header">
+                <div style="font-weight: 600; color: #163956;">📋 Process table</div>
+                <div class="btn-group">
+                    <button class="btn" id="addRowBtn">➕ Add process</button>
+                    <button class="btn" id="removeRowBtn">➖ Remove last</button>
+                </div>
+            </div>
+
+            <table class="process-table" id="processTable">
+                <thead>
+                    <tr><th>Process ID</th><th>Arrival time</th><th>Burst time</th></tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+
+            <div class="algorithm-bar">
+                <div class="algo-selector">
+                    <label><input type="radio" name="algorithm" value="fcfs" checked> FCFS</label>
+                    <label><input type="radio" name="algorithm" value="sjf"> SJF (non‑preemptive)</label>
+                </div>
+                <button class="simulate-btn" id="simulateBtn">▶ SIMULATE</button>
+            </div>
+        </div>
+
+        <div class="output-panel" id="outputPanel">
+            <div class="gantt-container">
+                <div class="gantt-title">📊 Gantt chart</div>
+                <div id="ganttChart" class="gantt-chart"></div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stats-table-wrapper">
+                    <table class="stats-table" id="statsTable">
+                        <thead><tr><th>Process</th><th>Arrival</th><th>Burst</th><th>Waiting</th><th>Turnaround</th></tr></thead>
+                        <tbody id="statsBody"></tbody>
+                    </table>
+                </div>
+                <div class="avg-wait" id="avgWaitBox">
+                    <h3>⏱️ Average waiting time</h3>
+                    <div class="value" id="avgWaitValue">0.00</div>
+                </div>
+            </div>
+
+            <div id="sjfLogBox" class="sjf-log" style="display: none;">
+                <h4>🧠 Dynamic selection of shortest job</h4>
+                <div id="sjfLogEntries" class="log-entries"></div>
+            </div>
+        </div>
+        <div class="footer-note">* Times in arbitrary units · For SJF, tie-breaker: earlier arrival → smaller ID</div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
